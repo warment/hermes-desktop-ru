@@ -44,7 +44,7 @@ def add_useI18n_if_missing(filepath):
         lines = content.split('\n')
         last_import_idx = 0
         for i, line in enumerate(lines):
-            if line.startswith('import ') and '@/` in line:
+            if line.startswith('import ') and '@/' in line:
                 last_import_idx = i
         lines.insert(last_import_idx + 1, "import { useI18n } from '@/i18n'")
         content = '\n'.join(lines)
