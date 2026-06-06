@@ -117,6 +117,10 @@ hermes-desktop-ru/
 - Исправления ошибок
 - Улучшения скрипта установки
 
+## 📣 Официальное обсуждение
+
+Issue в основном репозитории Hermes: [#40347](https://github.com/NousResearch/hermes-agent/issues/40347)
+
 ---
 
 ## 📄 Лизензия
