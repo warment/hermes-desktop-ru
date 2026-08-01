@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/NousResearch/hermes-agent"><img src="https://img.shields.io/badge/Hermes_Agent-Official_Repo-FFD700?style=for-the-badge&logo=github" alt="Hermes Agent"></a>
-  <a href="https://github.com/warment/hermes-agent/releases"><img src="https://img.shields.io/github/v/release/warment/hermes-agent?style=for-the-badge&color=green" alt="Release"></a>
+  <a href="https://github.com/warment/hermes-desktop-ru/releases"><img src="https://img.shields.io/github/v/release/warment/hermes-desktop-ru?style=for-the-badge&color=green" alt="Release"></a>
   <a href="https://github.com/NousResearch/hermes-agent/pull/42705"><img src="https://img.shields.io/badge/PR-#42705-blue?style=for-the-badge" alt="PR #42705"></a>
 </p>
 
@@ -22,8 +22,8 @@
 
 | 版本 | 链接 | 说明 |
 |------|------|------|
-| **v2.0.0-ru-locale** | [发布](https://github.com/warment/hermes-agent/releases/tag/v2.0.0-ru-locale) | **当前版本。** 完整俄语本地化（约 99%），41 个文件 |
-| v1.0.0-ru-locale | [发布](https://github.com/warment/hermes-agent/releases/tag/v1.0.0-ru-locale) | 存档。第一版（i18n 文件） |
+| **v2.0.0** | [发布](https://github.com/warment/hermes-desktop-ru/releases/tag/v2.0.0) | **当前版本。** 完整俄语本地化（约 99%），41 个文件 |
+| v1.0.0 | [发布](https://github.com/warment/hermes-desktop-ru/releases/tag/v1.0.0) | 存档。第一版（i18n 文件） |
 
 需要 Hermes Agent **v0.19.1** (2026-07-30) 或更新版本。
 
@@ -60,7 +60,7 @@ curl -sSL https://raw.githubusercontent.com/warment/hermes-desktop-ru/main/insta
 或通过 git：
 
 ```bash
-git clone https://github.com/warment/hermes-agent.git
+git clone https://github.com/warment/hermes-desktop-ru.git
 cd hermes-agent && ./install.sh
 ```
 
