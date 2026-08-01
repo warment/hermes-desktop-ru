@@ -3,9 +3,9 @@
 # Полная русификация Hermes Agent Desktop (~99%) — Hermes v0.19.1+
 #
 # Использование:
-#   curl -sSL https://raw.githubusercontent.com/warment/hermes-agent/main/install.sh | bash
+#   curl -sSL https://raw.githubusercontent.com/warment/hermes-desktop-ru/main/install.sh | bash
 #   или
-#   git clone https://github.com/warment/hermes-agent.git && cd hermes-agent && ./install.sh [путь-к-hermes-agent]
+#   git clone https://github.com/warment/hermes-desktop-ru.git && cd hermes-desktop-ru && ./install.sh [путь-к-hermes-agent]
 
 set -e
 
@@ -16,8 +16,8 @@ NC='\033[0m'
 
 HERMES_DIR="${1:-}"
 REPO_DIR="$(cd "$(dirname "$0")" 2>/dev/null && pwd)"
-VERSION="v2.0.0-ru-locale"
-ASSET_URL="https://github.com/warment/hermes-agent/releases/download/$VERSION/hermes-ru-locale-v2.0.0.zip"
+VERSION="v2.0.0"
+ASSET_URL="https://github.com/warment/hermes-desktop-ru/releases/download/$VERSION/hermes-desktop-ru-v2.0.0.zip"
 
 log()   { echo -e "${GREEN}[✓]${NC} $1"; }
 warn()  { echo -e "${YELLOW}[!]${NC} $1"; }
@@ -103,7 +103,7 @@ find_hermes() {
 
 # --- Download package ---
 download_package() {
-  local tmp_zip="/tmp/hermes-ru-locale-$VERSION.zip"
+  local tmp_zip="/tmp/hermes-desktop-ru-v2.0.0.zip"
   local tmp_dir="/tmp/hermes-ru-locale-pkg"
   rm -rf "$tmp_dir"
   mkdir -p "$tmp_dir"
