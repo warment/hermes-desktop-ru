@@ -1,10 +1,11 @@
 #!/bin/bash
 # Hermes Desktop Russian Locale Installer (v2, 2026-08-01)
-# Устанавливает русский язык в десктопное приложение Hermes Agent (v0.19.1)
+# Полная русификация Hermes Agent Desktop (~99%) — Hermes v0.19.1+
 #
 # Использование:
-#   git clone https://github.com/warment/hermes-desktop-ru.git && cd hermes-desktop-ru && ./install.sh
-#   или с указанием пути: ./install.sh /path/to/hermes-agent
+#   curl -sSL https://raw.githubusercontent.com/warment/hermes-agent/main/install.sh | bash
+#   или
+#   git clone https://github.com/warment/hermes-agent.git && cd hermes-agent && ./install.sh [путь-к-hermes-agent]
 
 set -e
 
@@ -14,13 +15,15 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 HERMES_DIR="${1:-}"
-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(cd "$(dirname "$0")" 2>/dev/null && pwd)"
+VERSION="v2.0.0-ru-locale"
+ASSET_URL="https://github.com/warment/hermes-agent/releases/download/$VERSION/hermes-ru-locale-v2.0.0.zip"
 
 log()   { echo -e "${GREEN}[✓]${NC} $1"; }
 warn()  { echo -e "${YELLOW}[!]${NC} $1"; }
 error() { echo -e "${RED}[✗]${NC} $1"; exit 1; }
 
-# Список всех файлов перевода (патчи i18n + компоненты)
+# Список файлов перевода (для бэкапа)
 FILES=(
   "apps/desktop/src/i18n/catalog.ts"
   "apps/desktop/src/i18n/en.ts"
@@ -81,7 +84,6 @@ find_hermes() {
       return 0
     fi
   done
-  # Try to find via `which hermes`
   local hermes_bin
   hermes_bin=$(which hermes 2>/dev/null || true)
   if [ -n "$hermes_bin" ]; then
@@ -99,18 +101,17 @@ find_hermes() {
   return 1
 }
 
-# --- Check if Russian is already installed ---
-check_existing() {
-  if [ -f "$HERMES_DIR/apps/desktop/src/i18n/ru.ts" ]; then
-    if grep -q "Hermes Desktop готов" "$HERMES_DIR/apps/desktop/src/i18n/ru.ts" 2>/dev/null; then
-      warn "Русский перевод уже установлен"
-      read -p "Переустановить? (y/N) " -n 1 -r
-      echo
-      if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        exit 0
-      fi
-    fi
-  fi
+# --- Download package ---
+download_package() {
+  local tmp_zip="/tmp/hermes-ru-locale-$VERSION.zip"
+  local tmp_dir="/tmp/hermes-ru-locale-pkg"
+  rm -rf "$tmp_dir"
+  mkdir -p "$tmp_dir"
+  log "Скачивание пакета перевода ($VERSION)..."
+  curl -sSL -o "$tmp_zip" "$ASSET_URL"
+  log "Распаковка..."
+  unzip -qo "$tmp_zip" -d "$tmp_dir"
+  PKG_DIR="$tmp_dir"
 }
 
 # --- Backup ---
@@ -128,61 +129,25 @@ backup() {
 }
 
 # --- Apply files ---
-apply_patches() {
-  log "Копирование файлов перевода..."
-
-  # i18n-файлы (полные версии en/zh/types/catalog/languages + ru)
-  cp "$REPO_DIR/patches/i18n/"*.ts "$HERMES_DIR/apps/desktop/src/i18n/"
-  # ru-constants.ts (поля настроек)
-  cp "$REPO_DIR/patches/ru-constants.ts" "$HERMES_DIR/apps/desktop/src/app/settings/ru-constants.ts"
-  # переведённые компоненты (биллинг, компьютер, эмодзи-пикер, оверлеи и т.д.)
-  rsync -a "$REPO_DIR/patches/src/" "$HERMES_DIR/apps/desktop/src/"
-
-  log "Все 41 файл перевода применены"
+apply_files() {
+  log "Копирование файлов перевода (41 файл)..."
+  rsync -a "$PKG_DIR/apps/desktop/src/" "$HERMES_DIR/apps/desktop/src/"
+  log "Файлы перевода применены"
 }
 
 # --- Build ---
 build() {
   log "Сборка приложения (несколько минут)..."
   cd "$HERMES_DIR/apps/desktop"
-  if npm run pack 2>&1 | tail -5; then
+  set +e
+  npm run pack 2>&1 | tail -5
+  local rc=${PIPESTATUS[0]}
+  set -e
+  if [ "$rc" -eq 0 ]; then
     log "Сборка завершена успешно"
   else
-    error "Ошибка сборки. Проверьте логи выше."
+    error "Ошибка сборки (код $rc). Проверьте логи выше."
   fi
-}
-
-# --- Install LaunchAgent for auto-reapply ---
-install_autopatch() {
-  local plist_path="$HOME/Library/LaunchAgents/com.hermes-desktop-ru.patcher.plist"
-  local script_path="$REPO_DIR/scripts/auto-patch.sh"
-
-  chmod +x "$script_path"
-
-  cat > "$plist_path" << PLIST
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.hermes-desktop-ru.patcher</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/bin/bash</string>
-        <string>$script_path</string>
-    </array>
-    <key>WatchPaths</key>
-    <array>
-        <string>$HERMES_DIR/apps/desktop/src/i18n/en.ts</string>
-    </array>
-    <key>ThrottleInterval</key>
-    <integer>10</integer>
-</dict>
-</plist>
-PLIST
-
-  launchctl load "$plist_path" 2>/dev/null || true
-  log "Auto-patcher установлен (LaunchAgent)"
 }
 
 # --- Main ---
@@ -196,11 +161,10 @@ if ! find_hermes; then
 fi
 
 log "Hermes найден: $HERMES_DIR"
-check_existing
+download_package
 backup
-apply_patches
+apply_files
 build
-install_autopatch
 
 echo ""
 echo "============================================"
@@ -210,5 +174,4 @@ echo "Запустите Hermes Desktop и выберите:"
 echo "  Settings → Appearance → Русский"
 echo ""
 echo "Для отката: $HERMES_DIR/.ru-backup-*/restore.sh"
-echo "Для удаления: ./uninstall.sh"
 echo ""
