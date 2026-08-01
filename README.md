@@ -6,10 +6,10 @@
 
 <p align="center">
   <a href="https://github.com/NousResearch/hermes-agent"><img src="https://img.shields.io/badge/Hermes_Agent-Official_Repo-FFD700?style=for-the-badge&logo=github" alt="Hermes Agent"></a>
-  <a href="https://github.com/warment/hermes-agent/releases"><img src="https://img.shields.io/github/v/release/warment/hermes-agent?style=for-the-badge&color=green" alt="Release"></a>
+  <a href="https://github.com/warment/hermes-desktop-ru/releases"><img src="https://img.shields.io/github/v/release/warment/hermes-desktop-ru?style=for-the-badge&color=green" alt="Release"></a>
   <a href="https://github.com/NousResearch/hermes-agent/pull/42705"><img src="https://img.shields.io/badge/PR-#42705-blue?style=for-the-badge" alt="PR #42705"></a>
-  <a href="https://github.com/warment/hermes-agent/releases"><img src="https://img.shields.io/github/downloads/warment/hermes-agent/total?style=for-the-badge&color=orange" alt="Downloads"></a>
-  <a href="https://github.com/warment/hermes-agent"><img src="https://img.shields.io/github/stars/warment/hermes-agent?style=for-the-badge&color=purple" alt="Stars"></a>
+  <a href="https://github.com/warment/hermes-desktop-ru/releases"><img src="https://img.shields.io/github/downloads/warment/hermes-desktop-ru/total?style=for-the-badge&color=orange" alt="Downloads"></a>
+  <a href="https://github.com/warment/hermes-desktop-ru"><img src="https://img.shields.io/github/stars/warment/hermes-desktop-ru?style=for-the-badge&color=purple" alt="Stars"></a>
   <a href="https://discord.gg/NousResearch"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
 </p>
 
@@ -25,8 +25,8 @@
 
 | Версия | Ссылка | Описание |
 |--------|--------|----------|
-| **v2.0.0-ru-locale** | [Релиз](https://github.com/warment/hermes-agent/releases/tag/v2.0.0-ru-locale) | **Актуальная.** Полная русификация (~99%), 41 файл |
-| v1.0.0-ru-locale | [Релиз](https://github.com/warment/hermes-agent/releases/tag/v1.0.0-ru-locale) | Архив. Первая версия (i18n-файлы) |
+| **v2.0.0** | [Релиз](https://github.com/warment/hermes-desktop-ru/releases/tag/v2.0.0) | **Актуальная.** Полная русификация (~99%), 41 файл |
+| v1.0.0 | [Релиз](https://github.com/warment/hermes-desktop-ru/releases/tag/v1.0.0) | Архив. Первая версия (i18n-файлы) |
 
 Требуется Hermes Agent **v0.19.1** (2026-07-30) или новее.
 
@@ -63,7 +63,7 @@ curl -sSL https://raw.githubusercontent.com/warment/hermes-desktop-ru/main/insta
 Или через git:
 
 ```bash
-git clone https://github.com/warment/hermes-agent.git
+git clone https://github.com/warment/hermes-desktop-ru.git
 cd hermes-agent && ./install.sh
 ```
 
