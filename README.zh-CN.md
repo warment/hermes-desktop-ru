@@ -54,7 +54,7 @@
 ### 快速安装 — 一条命令
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/warment/hermes-agent/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/warment/hermes-desktop-ru/main/install.sh | bash
 ```
 
 或通过 git：
