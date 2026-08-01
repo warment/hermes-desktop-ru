@@ -55,7 +55,7 @@ Technical strings are intentionally left untranslated: URL examples, provider br
 ### Quick install — one command
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/warment/hermes-agent/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/warment/hermes-desktop-ru/main/install.sh | bash
 ```
 
 Or via git:
