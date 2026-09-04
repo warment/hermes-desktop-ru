@@ -16,6 +16,21 @@
   [<a href="README.md">Русский</a>] · [<a href="README.en.md">English</a>] · [<b>中文</b>]
 </p>
 
+> [!IMPORTANT]
+> ## ✅ 项目已完成 — 俄语已正式加入 Hermes
+>
+> 2026 年 9 月 1 日，官方俄语界面正式进入 Hermes Desktop
+> （[PR #100429](https://github.com/NousResearch/hermes-agent/pull/100429)，由 Nous Research 创始人 Teknium 合并）。
+> 从下一个版本起，在 **Settings → Appearance → Language → Русский** 中选择俄语即可，无需再使用本安装器。
+>
+> **首创者身份由 Hermes 作者正式确认**，见 [合并说明的 Credit 部分](https://github.com/NousResearch/hermes-agent/pull/100429)：
+> > 🥇 **@warment** filed the earliest request-plus-implementation in #42705 (Jun 9) — **first to bring desktop Russian to the table**.
+>
+> 另见 [Teknium 的收尾评论](https://github.com/NousResearch/hermes-agent/issues/52137#issuecomment-5496384849)。
+>
+> 感谢所有加星、测试和制作移植的用户 — 包括
+> [Adversif 的 Windows 移植版](https://github.com/Adversif/Win-hermes-desktop-ru)。🇷🇺
+
 ---
 
 ## ⚡ 本地化发布

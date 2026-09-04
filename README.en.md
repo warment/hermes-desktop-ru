@@ -17,6 +17,21 @@
   [<a href="README.md">Русский</a>] · [<b>English</b>] · [<a href="README.zh-CN.md">中文</a>]
 </p>
 
+> [!IMPORTANT]
+> ## ✅ Project completed — Russian is now official in Hermes
+>
+> On September 1, 2026, the official Russian locale landed in Hermes Desktop
+> ([PR #100429](https://github.com/NousResearch/hermes-agent/pull/100429), merged by Teknium, founder of Nous Research).
+> From the next release, pick **Settings → Appearance → Language → Русский** — this installer is no longer needed.
+>
+> **The first-mover credit is fixed by the Hermes author** in the [merge description Credit section](https://github.com/NousResearch/hermes-agent/pull/100429):
+> > 🥇 **@warment** filed the earliest request-plus-implementation in #42705 (Jun 9) — **first to bring desktop Russian to the table**.
+>
+> Also in [Teknium's closing comment](https://github.com/NousResearch/hermes-agent/issues/52137#issuecomment-5496384849).
+>
+> Thanks to everyone who starred, tested, and built ports — including
+> [Adversif's Windows port](https://github.com/Adversif/Win-hermes-desktop-ru). 🇷🇺
+
 ---
 
 ## ⚡ Locale releases
